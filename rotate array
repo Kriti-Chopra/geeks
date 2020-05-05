@@ -1,0 +1,21 @@
+void rotate(int *arr,int beg,int end){
+    while(beg<end){
+        int t=arr[end];
+        arr[end]=arr[beg];
+        arr[beg]=t;
+        ++beg; --end;
+    }
+}
+
+
+// This function rotate array by D elements
+// arr: input elements
+// n: size of the array
+void rotateArr(int arr[], int d, int n){
+    
+   // Your code here
+    rotate(arr,0,d-1);
+    rotate(arr,d,n-1);     
+    rotate(arr,0,n-1);
+}
+
