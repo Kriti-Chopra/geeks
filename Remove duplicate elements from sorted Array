@@ -1,0 +1,19 @@
+/*You are required to complete this function */
+int remove_duplicate(int A[],int N)
+{
+//Your code here
+    int i=0;
+    int write=0;
+    while(i<N){
+        while(i<N && i-1>=0 && A[i]==A[i-1]){
+            ++i;
+        }
+        //cout<<write<<" "<<i;
+        if(i<N) {
+            A[write]=A[i];
+            ++write;
+            ++i;
+        }
+    }
+    return write;
+}
