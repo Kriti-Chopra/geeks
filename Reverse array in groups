@@ -1,0 +1,23 @@
+void mreverse(vector<long long>& arr,int beg,int end){
+    while(beg<end){
+        long long t=arr[beg];
+        arr[beg]=arr[end];
+        arr[end]=t;
+        ++beg; --end;
+    }
+}
+
+
+// Function to reverse the array in groups
+vector<long long> reverseInGroups(vector<long long> mv, int n, int k){
+    
+    // your code here
+    int beg=0;
+    while(beg<n){
+        int end=min(n-1,beg+k-1);
+        mreverse(mv,beg,end);
+        beg=beg+k;
+    }
+    
+    return mv;
+}
