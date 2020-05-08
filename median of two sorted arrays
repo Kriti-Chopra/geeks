@@ -1,0 +1,39 @@
+//User function template for C++
+
+// arr : given array with size n 
+// brr : given array with size m
+int findMedian(int arr[], int n, int brr[], int m){
+    // code here
+    // merge the arrays
+    // and then find the median of that array
+    vector<int> ans;
+    int i=0,j=0;
+    while(i<n && j<m){
+        if(arr[i]<=brr[j]){
+            ans.push_back(arr[i]);
+            ++i;
+        }
+        if(brr[j]<arr[i]){
+            ans.push_back(brr[j]);
+            ++j;
+        }
+    }
+    while(i<n){
+        ans.push_back(arr[i]);
+        ++i;
+    }
+    while(j<m){
+        ans.push_back(brr[j]);
+        ++j;
+    }
+    
+    //for(auto k:ans) cout<<k<<" ";
+    
+    int mid=(n+m)/2;
+    int result=ans[mid];
+    if((n+m)%2==0) {
+        result+=ans[mid-1];
+        result/=2;
+    }
+    return result;
+}
