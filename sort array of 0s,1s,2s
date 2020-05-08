@@ -1,0 +1,44 @@
+
+void sort012(int arr[], int n)
+{
+    // code here
+    //take all the 0s to the starting first
+    int i=0,j=0;
+    while(i<n && j<n){
+        if(arr[i]!=0){
+            while(j<n && arr[j]!=0){
+                ++j;
+            }
+            if(j<n){
+                //swap i and j values
+                int t=arr[i];
+                arr[i]=arr[j];
+                arr[j]=t;
+            }
+        }
+        ++i;
+        ++j;
+    }
+    
+    //now do the same and take all the 2s to the end
+    i=0,j=0;
+    while(i<n && j<n){
+        if(arr[i]==2){
+            
+            if(i==j) ++j;
+            //cout<<i<<" "<<j<<endl;
+            while(j<n && arr[j]==2){
+                ++j;
+            }
+            if(j<n){
+                //swap
+                int t=arr[i];
+                arr[i]=arr[j];
+                arr[j]=t;
+            }
+        }
+        ++i;
+        ++j;
+    }
+    
+}
