@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+int func(int * arr,int beg,int end,int key){
+    if(beg>end) return -1;
+    
+    int mid=(beg+end)/2;
+    if(arr[mid]==key) return mid;
+    
+    if(arr[beg]<=arr[mid]){
+        //side is sorted
+        
+        if(key>=arr[beg] && key<=arr[mid]) return func(arr,beg,mid-1,key);
+        return func(arr,mid+1,end,key);
+    }
+    
+    // else other side is sorted
+    if(key>=arr[mid] && key<=arr[end]) return func(arr,mid+1,end,key);
+    return func(arr,beg,mid-1,key);
+}
+
+int main() {
+	//code
+	int t; cin>>t;
+	for(int i=0;i<t;++i){
+	    int n; cin>>n;
+	    int arr[n];
+	    for(int j=0;j<n;++j) cin>>arr[j];
+        int k; cin>>k;	    
+	    cout<<func(arr,0,n-1,k)<<"\n";
+	}
+	return 0;
+}
