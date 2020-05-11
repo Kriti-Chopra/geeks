@@ -1,0 +1,28 @@
+
+/*
+struct Node {
+  int data;
+  struct Node *next;
+  Node(int x) {
+    data = x;
+    next = NULL;
+  }
+};
+*/
+// Should reverse list and return new head.
+Node* reverseList(Node *head)
+{
+  // Your code here
+  if(head==NULL || head->next==NULL) return head;
+  
+  Node *cur=head,*prev=NULL, *next=NULL;
+  while(cur!=NULL){
+      next=cur->next;
+      cur->next=prev;
+      prev=cur;
+      cur=next;
+  }
+  
+  return prev;
+}
+
