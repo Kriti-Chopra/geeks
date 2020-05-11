@@ -1,0 +1,54 @@
+/* Structure of the linked list node is as
+struct Node 
+{
+    int data;
+    struct Node* next;
+    Node(int x) { data = x;  next = NULL; }
+};
+*/
+
+Node* merge(Node* head1,Node* head2){
+    if(head1==NULL) return head2;
+    if(head2==NULL) return head1;
+    
+    Node * ans=NULL;
+    if(head1->data<head2->data){
+        ans=head1;
+        ans->next=merge(head1->next,head2);
+    }
+    
+    else{
+        ans=head2;
+        ans->next=merge(head1,head2->next);
+    }
+    
+    return ans;
+}
+
+/* Function to mergesort the linked list
+   It should return head of the modified list  */
+Node* mergeSort(Node* head) {
+    // your code here
+    if(head==NULL || head->next==NULL) return head;
+    
+    Node *slow=head,*fast=head, *pre=NULL;
+    while(fast!=NULL && fast->next!=NULL){
+        pre=slow;
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    pre->next=NULL;
+    
+    // Node* cur=head;
+    // while(cur!=NULL){
+    //     cout<<cur->data<<" ok\n";
+    //     cur=cur->next;
+    // }
+    // cur=slow;
+    // while(cur!=NULL){
+    //     cout<<cur->data<<" ok\n";
+    //     cur=cur->next;
+    // }
+    // return NULL;
+    return merge(mergeSort(head),mergeSort(slow));
+}
