@@ -1,0 +1,13 @@
+/*This is a function problem.You only need to complete the function given below*/
+/*You are required to complete this method */
+int remainderWith7(string n)
+{
+    //Your code here
+    int rem=0;
+    int newNum=0;
+    for(int i=0;i<n.length();++i){
+        newNum=((rem*10)+(n[i]-'0'));
+        rem=newNum%7;
+    }
+    return rem;
+}
