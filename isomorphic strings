@@ -1,0 +1,25 @@
+// This function returns true if str1 and str2 are ismorphic
+// else returns false
+bool areIsomorphic(string str1, string str2)
+{
+    
+    // Your code here
+    if(str1.length()!=str2.length()) return false;
+    
+    vector<char> alpha(26,'$');
+    vector<bool> value(26,false);
+    int i=0;
+    while(i<str1.length()){
+        if(alpha[str1[i]-'a']=='$'){
+            //we have to set both alpha and value
+            alpha[str1[i]-'a']=str2[i];
+            if(value[str2[i]-'a']) return false;
+            value[str2[i]-'a']=true;
+        }
+        else if(alpha[str1[i]-'a']!=str2[i]) return false;
+    
+        ++i;
+    }
+    return true;
+    
+}
