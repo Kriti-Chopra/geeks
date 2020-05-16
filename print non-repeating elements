@@ -1,0 +1,15 @@
+// Function to print the non repeated elements in the array
+// arr[]: input array
+// n: size of array
+void printNonRepeated(int arr[],int n)
+{
+    //Your code here
+    unordered_map<int,int> map;
+    for(int i=0;i<n;++i){
+        ++map[arr[i]];
+    }
+    
+    for(int i=0;i<n;++i){
+        if(map[arr[i]]==1) cout<<arr[i]<<" "; 
+    }
+}
