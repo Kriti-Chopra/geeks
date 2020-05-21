@@ -1,0 +1,38 @@
+struct Node *newNode(int data) 
+{ 
+    struct Node *new_node = (struct Node *) malloc(sizeof(struct Node)); 
+    new_node->data = data; 
+    new_node->next = NULL; 
+    return new_node; 
+} 
+// write a function returns the resultant linked list
+Node* addTwoLists(Node* first, Node* second) {
+    // Code here
+    Node * head2=NULL,*cur2=NULL;
+    if(first==NULL) return second;
+    if(second==NULL) return first;
+    
+    int carry=0;
+    Node *firstc=first,*secondc=second;
+    while(firstc!=NULL || secondc!=NULL){
+        int cur=(firstc!=NULL? firstc->data: 0) + (secondc!=NULL? secondc->data: 0)+carry;
+        int val=cur%10;
+        carry=cur/10;
+        // cout<<val;
+        if(head2==NULL) {
+            head2= newNode(val);
+            cur2=head2;
+        }
+        else {
+            cur2->next= newNode(val);
+            cur2=cur2->next;
+        }
+        if(firstc!=NULL)firstc=firstc->next;
+        if(secondc!=NULL)secondc=secondc->next;
+    }
+    if(carry>0){
+        cur2->next=newNode(carry);
+    }
+    
+    return head2;
+}
