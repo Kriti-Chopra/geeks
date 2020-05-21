@@ -1,0 +1,21 @@
+
+void reverse(char *str, int len)
+{
+
+// Your code goes here
+    stack<char> mstack;
+    int i=0;
+    while(str[i]!='\0'){
+        mstack.push(str[i]);
+        ++i;
+    }
+    
+    i=0;
+    while(!mstack.empty()){
+        str[i]=mstack.top();
+        mstack.pop();
+        ++i;
+    }
+    //cout<<ans;
+
+}
