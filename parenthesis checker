@@ -1,0 +1,17 @@
+// Function to return if the paranthesis are balanced or not
+bool ispar(string x)
+{
+    // Your code here
+    stack<char> mstack;
+    int i=0;
+    while(i<x.length()){
+        if(x[i]=='[' || x[i]=='{' || x[i]=='(') mstack.push(x[i]);
+        else if(x[i]==')' && !mstack.empty() && mstack.top()=='(') mstack.pop();
+        else if(x[i]=='}' && !mstack.empty() && mstack.top()=='{') mstack.pop();
+        else if(x[i]==']' && !mstack.empty() && mstack.top()=='[') mstack.pop();
+        else return false;
+        ++i;
+    }
+    if(mstack.empty()) return true;
+    return false;
+}
