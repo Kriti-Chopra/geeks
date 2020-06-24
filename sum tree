@@ -1,0 +1,29 @@
+/*  Tree node
+struct Node
+{
+    int data;
+    Node* left, * right;
+}; */
+
+int sum(struct Node *root) 
+{ 
+   if(root == NULL) 
+     return 0; 
+   return sum(root->left) + root->data + sum(root->right); 
+} 
+
+// Should return true if tree is Sum Tree, else false
+bool isSumTree(Node* root)
+{
+     // Your code here
+     if(root==NULL || (root->left==NULL && root->right==NULL)) return true;
+     
+    //  if(root->left!=NULL && root->right!=NULL && root->left->data+root->right->data!=root->data) return false;
+     
+     int l=sum(root->left);
+     int r=sum(root->right);
+     bool cur=false;
+     if(root->data==l+r) cur=true;
+     
+     return cur&isSumTree(root->left)&isSumTree(root->right);
+}
