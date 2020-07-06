@@ -1,0 +1,39 @@
+/* A binary tree node has data, pointer to left child
+   and a pointer to right child 
+struct Node
+{
+    int data;
+    struct Node* left;
+    struct Node* right;
+    
+    Node(int x){
+        data = x;
+        left = right = NULL;
+    }
+}; */
+
+// Should print right view of tree
+void rightView(Node *root)
+{
+   // Your Code here
+   if(root==NULL) return;
+   queue<Node*> q;
+   q.push(root);
+   while(!q.empty()){
+       
+       int cursize=q.size();
+    //   cout<<cursize<<endl;
+       for(int i=0;i<cursize-1;++i){
+           if(q.front()->left!=NULL) q.push(q.front()->left);
+           if(q.front()->right!=NULL) q.push(q.front()->right);
+           
+           q.pop();
+       }
+       cout<<q.front()->data<<" ";
+        if(q.front()->left!=NULL) q.push(q.front()->left);
+        if(q.front()->right!=NULL) q.push(q.front()->right);
+           
+        q.pop();
+       
+   }
+}
